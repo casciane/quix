@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: gainsboro;
+    
+}
+
+.quiz-container{
+    max-width: 600px;
+    margin: 90px auto ;
+    
+}
+
+#opcoes{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: grey;
+}
+
+button{
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.correto{
+    background-color: #8bc34a;
+}
+
+.incorreto{
+    background-color: #f00606;
+}
+h1{
+    background: antiquewhite;
+}

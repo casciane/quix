@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+
+
+
+    <div class="quiz-container">
+        <h1>Quiz de Perguntas e Respostas</h1>
+        <div id="pergunta"></div>
+        <div id="opcoes"></div>
+        <div id="resultado"></div>
+    </div>
+
+
+
+
+    <script>
+
+        const perguntas = [
+            {
+                pergunta: " Qual dessas personagens entra pelo uma  porta que leva para outro mundo:",
+                opcoes: ["draculaura.", "tinkbell.", "quimposivul.", "branca de neve.", "coraline."],
+                resposta: "coraline."
+                
+            },
+            
+
+            {
+                pergunta: "Qual desses filmes as crianças desaparese ao decorrer dele:",
+                opcoes: ["os incriveis .", "o natal perfeito.", "madilda.","Divertida Mente.", "a fantastica frabrica de chocolate."],
+                resposta: "a fantastica frabrica de chocolate."
+            },
+
+            {
+                pergunta: "Qual dos filmes aparesse um dragão chamado furia da noite ?",
+                opcoes: ["como treinar o seu dragão", "Enrolados", "garota infernal", "rio", "star wars"],
+                resposta: "como treinar o seu dragão"
+            },
+
+            {
+                pergunta: " Qual dos filmes o protagonista morre ?",
+                opcoes: ["lucy", "Donsela", "a orrigem", "resistência", "linha de frente"],
+                resposta: "lucy"
+            },
+
+            {
+                pergunta: "Qual filme aparesse um grupo de amigo adultos fazendo maluquices?",
+                opcoes: ["os mercenários", "gente grande", "to ryca", "d.u.f.f", "a mentira"],
+                resposta: "gente grande"
+            }
+        ];
+
+        const perguntaElemento = document.getElementById("pergunta");
+        const opcoesElemento = document.getElementById("opcoes");
+        const resultadoElemento = document.getElementById("resultado");
+
+        let indicePerguntaAtual = 0
+
+        function carregarPergunta() {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            perguntaElemento.textContent = perguntaAtual.pergunta;
+
+            opcoesElemento.innerHTML = "";
+            perguntaAtual.opcoes.forEach(opcao => {
+                const botao = document.createElement("button");
+                botao.textContent = opcao;
+                botao.addEventListener("click", () => verificarResposta(opcao));
+                opcoesElemento.appendChild(botao);
+            });
+        }
+
+        function verificarResposta(respostaSelecionada) {
+
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+
+            if (respostaSelecionada === perguntaAtual.resposta) {
+                resultadoElemento.textContent = "respostaCorreta!";
+                resultadoElemento.className = "correto";
+            } else {
+                resultadoElemento.textContent = "Resposta Incorreta. A resposta correta é: " + perguntaAtual.resposta;
+                resultadoElemento.className = "incorreto";
+            }
+
+            indicePerguntaAtual++;
+            if (indicePerguntaAtual < perguntas.length) {
+                setTimeout(carregarPergunta, 2000);
+            } else {
+                resultadoElemento.textContent = "Quiz concluído!";
+                resultadoElemento.className = "";
+            }
+
+        }
+
+        carregarPergunta();
+
+
+    </script>
+
+</body>
+
+</html>
